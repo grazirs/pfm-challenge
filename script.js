@@ -95,6 +95,35 @@ function spentPerMonthOnAverage(spentPerMonth) {
   return spentOnAverage.toFixed(2);
 }
 
+function totalSpentPerMonthPerCategory(transactions) {
+  const result = {};
+
+  for (let i = 0; i < transactions.length; i++) {
+    const year = transactions[i].date.getFullYear();
+    const month = transactions[i].date.getMonth();
+    const amount = transactions[i].amount;
+    const category = transactions[i].category;
+
+    const monthName = convertToMonthName(month + 1);
+    const monthKey = `${monthName} ${year}`;
+
+    if (amount < 0) {
+      if (!(monthKey in result)) {
+        result[monthKey] = {}
+      }
+
+      if (!(category in result[monthKey])) {
+        result[monthKey][category] = 0;
+      }
+
+      result[monthKey][category] += amount;
+    }
+
+  }
+
+  return result;
+}
+
 function convertToMonthName(number) {
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   return monthNames[number - 1];
@@ -112,3 +141,6 @@ console.log('Total spent per month:', totalPerMonth);
 const spentPerMonth = totalSpentPerMonth(transactions);
 const totalPerMonthOnAverage = spentPerMonthOnAverage(spentPerMonth);
 console.log('Total spent per month on average:', totalPerMonthOnAverage);
+
+const spentPerMonthPerCategory = totalSpentPerMonthPerCategory(transactions);
+console.log('Total spent per month per category', spentPerMonthPerCategory);
