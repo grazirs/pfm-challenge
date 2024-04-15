@@ -6,16 +6,15 @@ function readTransactions(path) {
 
   const array = data.toString().trim().split('\n');
   const result = [];
-  const items = array.map((element) => {
-    return element.split(';');
-  });
 
-  items.map((item) => {
+  array.map((element) => {
+    const item = element.split(';');
+
     let category = '';
     let amount = 0;
-
     const description = item[0];
     const date = new Date(item[1]);
+
     category += item[2];
     amount += parseFloat(item[3]);
 
@@ -80,9 +79,10 @@ function totalSpentPerMonth(transactions) {
   return spentPerMonth;
 }
 
-function spentPerMonthOnAverage(spentPerMonth) {
+function spentPerMonthOnAverage(transactions) {
   let total = 0;
   let totalOfMonths = 0;
+  const spentPerMonth = totalSpentPerMonth(transactions);
 
   for (const year in spentPerMonth) {
     for (const month in spentPerMonth[year]) {
@@ -138,8 +138,7 @@ console.log('Total spent per category:', totalPerCategory);
 const totalPerMonth = totalSpentPerMonth(transactions);
 console.log('Total spent per month:', totalPerMonth);
 
-const spentPerMonth = totalSpentPerMonth(transactions);
-const totalPerMonthOnAverage = spentPerMonthOnAverage(spentPerMonth);
+const totalPerMonthOnAverage = spentPerMonthOnAverage(transactions);
 console.log('Total spent per month on average:', totalPerMonthOnAverage);
 
 const spentPerMonthPerCategory = totalSpentPerMonthPerCategory(transactions);
