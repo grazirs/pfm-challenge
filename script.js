@@ -5,9 +5,8 @@ function readTransactions(path) {
   const data = fs.readFileSync(path);
 
   const array = data.toString().trim().split('\n');
-  const result = [];
 
-  array.map((element) => {
+  return array.map((element) => {
     const item = element.split(';');
 
     let category = '';
@@ -24,15 +23,13 @@ function readTransactions(path) {
       amount = parseFloat(sanitizedItem[1]);
     }
 
-    result.push({
+    return {
       description,
       amount,
       date,
       category,
-    });
+    }
   });
-
-  return result;
 }
 
 function totalSpentPerCategory(transactions) {
