@@ -1,3 +1,12 @@
 Withdrawal transaction using card ending with ***9474;2024-01-15T22:31:01.476Z;Withdrawal,-6252.86
 Spotify monthly sub;2024-01-26T18:30:01.576Z;Music;-10.99
 Salary of January;2024-01-01T08:30:00.000Z;Incomes;4096
+Salary of February;2024-02-01T08:30:00.000Z;Incomes;4000
+Restaurant A;2024-01-01T08:30:00.000Z;Food;-400
+Fast Food;2023-01-21T08:30:00.000Z;Food;-100
+Fast Food;2023-01-21T08:30:00.000Z;Music;-10.99
+Fast Food;2023-02-21T08:30:00.000Z;Music;-10.99
+Fast Food;2023-02-21T08:30:00.000Z;Food;-100
+Fast Food;2024-02-21T08:30:00.000Z;Food;-100
+Beauty Queen;2024-02-01T08:30:00.000Z;Beauty;-70
+Beauty Queen;2024-02-21T08:30:00.000Z;Beauty;-90
